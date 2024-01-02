@@ -10,6 +10,7 @@ public class PaddleMovement : MonoBehaviour
 
     void Awake() => mainCamera = Camera.main;
 
+    // TODO: add force and direction to a ball when it hits the paddle.
     void Update()
     {
         Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);

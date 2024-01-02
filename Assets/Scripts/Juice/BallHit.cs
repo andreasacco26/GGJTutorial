@@ -1,4 +1,3 @@
-using Cinemachine;
 using DG.Tweening;
 using UnityEngine;
 
@@ -13,15 +12,13 @@ using UnityEngine;
 public class BallHit : MonoBehaviour
 {
     [SerializeField] float brickMaxTimer = 1f;
-    [SerializeField] CinemachineVirtualCamera vcam;
+
     [SerializeField] float amplitude;
     [SerializeField] float shakeTime;
     [SerializeField] float tweenDuration;
     private float brickSoundTimer = 0.0f;
     private int dings;
-    private float shakeTimer;
-    private float shakeTimerTotal;
-    private float shakeInitialAmplitude;
+
 
     private bool wallSoundActive = false;
     private bool paddleSoundActive = false;
@@ -61,11 +58,7 @@ public class BallHit : MonoBehaviour
         }
         if (cameraShakeActive)
         {
-            vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = amplitude;
-            // TODO: improve this shit. Create a CameraManager singleton.
-            shakeTimer = shakeTime;
-            shakeTimerTotal = shakeTime;
-            shakeInitialAmplitude = amplitude;
+            CameraManager.Instance.ShakeCamera(amplitude, shakeTime);
         }
         if (ballTweenActive)
         {
@@ -83,12 +76,6 @@ public class BallHit : MonoBehaviour
     void Update()
     {
         brickSoundTimer += Time.deltaTime;
-        if (shakeTimer > 0)
-        {
-            shakeTimer -= Time.deltaTime;
-            vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain =
-            Mathf.Lerp(shakeInitialAmplitude, 0f, 1 - (shakeTimer / shakeTimerTotal));
-        }
     }
 
     public void ToggleBrickSound() { brickSoundActive = !brickSoundActive; }
