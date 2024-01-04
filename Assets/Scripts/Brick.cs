@@ -3,6 +3,7 @@ using UnityEngine;
 public class Brick : MonoBehaviour
 {
     [Header("Particle Effects")]
+    // This should not be here... but I'm lazy.
     [Tooltip("Particle effect prefab for impacts on the paddle."), SerializeField] GameObject particlesPrefab;
     private bool particlesActive = false;
 

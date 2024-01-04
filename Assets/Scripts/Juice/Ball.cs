@@ -5,7 +5,6 @@ using UnityEngine;
 // Ball: particles
 // Paddle: confetti
 // Bricks: crumble
-// Display settings: what are the most common screen sizes for brick breakers?
 // Score: put a small text in the canvas, update it +10pts from the ball whenever it hits a brick. Counter multiplies results
 // Toon shader?
 // Bloom?
