@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4908172507749086611}
   - component: {fileID: 4908172507749086620}
   - component: {fileID: 4908172507749086621}
-  - component: {fileID: -2761794973907590824}
+  - component: {fileID: 7658212612483056702}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Ball
@@ -122,7 +122,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-2761794973907590824
+--- !u!114 &7658212612483056702
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,3 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d33331170ec89114e8127353529ed9c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  brickMaxTimer: 1
+  amplitude: 1
+  shakeTime: 0.3
+  ballTweenDuration: 0.015
+  maxScale: 0.5

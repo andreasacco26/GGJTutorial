@@ -1,41 +1,49 @@
+using System.Collections.Generic;
 using UnityEngine;
+
+[System.Serializable]
+public struct ColorPalette
+{
+    public string name;
+    public Color backgroundColor;
+    public Color bricksColor;
+    public Color paddleColor;
+    public Color ballColor;
+}
 
 public class ChangeColors : MonoBehaviour
 {
-    [SerializeField] Color backgroundColor;
-    [SerializeField] Color bricksColor;
-    [SerializeField] Color paddleColor;
-    [SerializeField] Color ballColor;
-
-    [SerializeField] SpriteRenderer ballRenderer;
-    [SerializeField] SpriteRenderer paddleRenderer;
+    [Tooltip("List of available palettes to switch."), SerializeField] List<ColorPalette> colorPalettes;
+    [Tooltip("The ball renderer."), SerializeField] SpriteRenderer ballRenderer;
+    [Tooltip("The paddle renderer."), SerializeField] SpriteRenderer paddleRenderer;
+    private string currentPaletteName;
     private Camera mainCamera;
 
     void Start() => mainCamera = Camera.main;
 
-    private void ToggleColor(SpriteRenderer renderer, Color newColor, Color originalColor)
+    public void SelectPalette(string paletteName)
     {
-        if (renderer.color == newColor) { renderer.color = originalColor; }
-        else { renderer.color = newColor; }
+        ColorPalette palette = colorPalettes.Find((x) => x.name == paletteName);
+        if (paletteName == null)
+        {
+            Debug.Log("Could not find palette '" + paletteName + "'!");
+            return;
+        }
+
+        mainCamera.backgroundColor = palette.backgroundColor;
+        ballRenderer.color = palette.ballColor;
+        paddleRenderer.color = palette.paddleColor;
+        foreach (GameObject brick in GameManager.Instance.GetAllBricks())
+        {
+            brick.GetComponent<SpriteRenderer>().color = palette.bricksColor;
+        }
+
+        currentPaletteName = palette.name;
     }
 
     public void ToggleColors()
     {
-        if (mainCamera.backgroundColor == backgroundColor)
-        {
-            mainCamera.backgroundColor = Color.black;
-        }
-        else
-        {
-            mainCamera.backgroundColor = backgroundColor;
-        };
-
-        ToggleColor(ballRenderer, ballColor, Color.white);
-        ToggleColor(paddleRenderer, paddleColor, Color.gray);
-
-        foreach (GameObject brick in GameManager.Instance.GetAllBricks())
-        {
-            ToggleColor(brick.GetComponent<SpriteRenderer>(), bricksColor, Color.white);
-        }
+        if (currentPaletteName == "original") SelectPalette("alternative");
+        else SelectPalette("original");
     }
 }

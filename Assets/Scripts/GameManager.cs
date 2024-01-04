@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
 {
     [Tooltip("Reference to the ball object."), SerializeField] GameObject ball;
     [Tooltip("Maximum allowed speed from which force applied to the ball is calculated."), SerializeField] float speed;
-    private readonly List<GameObject> allBricks;
+    private List<GameObject> allBricks = new List<GameObject>();
     private Rigidbody2D ballRb;
 
     public static GameManager Instance { get; private set; }

@@ -2,26 +2,30 @@ using DG.Tweening;
 using UnityEngine;
 
 // TODO list:
-// Scale paddle based on mouse offset
 // Cutify: paddle face
 // Cutify: paddle face animation
 // Bricks: crumble
-
-public class BallHit : MonoBehaviour
+// Score?
+// Toon shader?
+// Bloom?
+public class Ball : MonoBehaviour
 {
-    [SerializeField] float brickMaxTimer = 1f;
+    [Tooltip("Short interval during which player can do brick combos. Used for SFX and VFX"), SerializeField] float brickMaxTimer = 1f;
+    [Header("Camera Effects")]
+    [Tooltip("Amplitude of the camera shake."), SerializeField] float amplitude;
+    [Tooltip("Time a single camera shake lasts."), SerializeField] float shakeTime;
+    [Header("Tweening")]
+    [Tooltip("How long the scale effect on the ball lasts."), SerializeField] float ballTweenDuration;
+    [Tooltip("Maximum scale for the ball when tweening"), SerializeField] float maxScale;
 
-    [SerializeField] float amplitude;
-    [SerializeField] float shakeTime;
-    [SerializeField] float tweenDuration;
     private float brickSoundTimer = 0.0f;
     private int dings;
-
     private bool wallSoundActive = false;
     private bool paddleSoundActive = false;
     private bool brickSoundActive = false;
     private bool cameraShakeActive = false;
     private bool ballTweenActive = false;
+    private float initialScale;
 
     private void PlayBrickSounds()
     {
@@ -44,11 +48,10 @@ public class BallHit : MonoBehaviour
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
         Color originalColor = sr.color;
         Sequence mySequence = DOTween.Sequence();
-        float tweenDuration = 0.015f;
-        mySequence.Append(transform.DOScale(0.5f, tweenDuration));
-        mySequence.Append(sr.DOColor(Color.white, tweenDuration));
-        mySequence.Append(transform.DOScale(0.3f, tweenDuration));
-        mySequence.Append(sr.DOColor(originalColor, tweenDuration));
+        mySequence.Append(transform.DOScale(maxScale, ballTweenDuration));
+        mySequence.Append(sr.DOColor(Color.white, ballTweenDuration));
+        mySequence.Append(transform.DOScale(initialScale, ballTweenDuration));
+        mySequence.Append(sr.DOColor(originalColor, ballTweenDuration));
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -59,6 +62,9 @@ public class BallHit : MonoBehaviour
         if (cameraShakeActive) CameraManager.Instance.ShakeCamera(amplitude, shakeTime);
         if (ballTweenActive) BallTween();
     }
+
+    // We assume scale on the x is equal to scale on the y.
+    void Start() => initialScale = transform.localScale.x;
 
     void Update()
     {

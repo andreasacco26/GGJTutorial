@@ -782,7 +782,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 1657305397}
   speed: 400
-  allBricks: []
 --- !u!4 &195684954
 Transform:
   m_ObjectHideFlags: 0
@@ -1189,7 +1188,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 294202448}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 72425357}
+        m_TargetAssemblyTypeName: Paddle, Assembly-CSharp
+        m_MethodName: TogglePaddleConfetti
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &294202448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1631,8 +1642,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1657305404}
-        m_TargetAssemblyTypeName: BallHit, Assembly-CSharp
+      - m_Target: {fileID: 1657305400}
+        m_TargetAssemblyTypeName: Ball, Assembly-CSharp
         m_MethodName: ToggleCameraShake
         m_Mode: 1
         m_Arguments:
@@ -2103,8 +2114,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1657305404}
-        m_TargetAssemblyTypeName: BallHit, Assembly-CSharp
+      - m_Target: {fileID: 1657305400}
+        m_TargetAssemblyTypeName: Ball, Assembly-CSharp
         m_MethodName: ToggleBallTween
         m_Mode: 1
         m_Arguments:
@@ -2427,8 +2438,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1657305404}
-        m_TargetAssemblyTypeName: HitSound, Assembly-CSharp
+      - m_Target: {fileID: 1657305400}
+        m_TargetAssemblyTypeName: Ball, Assembly-CSharp
         m_MethodName: TogglePaddleSound
         m_Mode: 1
         m_Arguments:
@@ -3937,10 +3948,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84c9fd85314ebf84998a1de6b12b7686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundColor: {r: 0.21698111, g: 0.21698111, b: 0.21698111, a: 1}
-  bricksColor: {r: 1, g: 0.3254717, b: 0.3254717, a: 1}
-  paddleColor: {r: 1, g: 0.50864935, b: 0.023584902, a: 1}
-  ballColor: {r: 1, g: 0.73333335, b: 0.3066038, a: 1}
+  colorPalettes:
+  - name: original
+    backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+    bricksColor: {r: 1, g: 1, b: 1, a: 1}
+    paddleColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    ballColor: {r: 1, g: 1, b: 1, a: 1}
+  - name: alternative
+    backgroundColor: {r: 0.21568628, g: 0.21568628, b: 0.21568628, a: 1}
+    bricksColor: {r: 1, g: 0.3254902, b: 0.3254902, a: 1}
+    paddleColor: {r: 1, g: 0.50980395, b: 0.023529412, a: 1}
+    ballColor: {r: 1, g: 0.73333335, b: 0.30588236, a: 1}
   ballRenderer: {fileID: 1657305401}
   paddleRenderer: {fileID: 729662729}
 --- !u!1 &1187944406
@@ -5325,8 +5343,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1657305404}
-        m_TargetAssemblyTypeName: HitSound, Assembly-CSharp
+      - m_Target: {fileID: 1657305400}
+        m_TargetAssemblyTypeName: Ball, Assembly-CSharp
         m_MethodName: ToggleBrickSound
         m_Mode: 1
         m_Arguments:
@@ -6511,8 +6529,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1657305404}
-        m_TargetAssemblyTypeName: HitSound, Assembly-CSharp
+      - m_Target: {fileID: 1657305400}
+        m_TargetAssemblyTypeName: Ball, Assembly-CSharp
         m_MethodName: ToggleWallSound
         m_Mode: 1
         m_Arguments:
@@ -6685,26 +6703,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c540db9d406c7a43928caee88761656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1657305400
+--- !u!114 &1657305400 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1657305397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4624b0fa8f6fab449a8dabf1d859fb9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!212 &1657305401 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 4908172507749086611, guid: b43020059a3f664448a3c600280b1a12, type: 3}
-  m_PrefabInstance: {fileID: 4908172508314766507}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1657305404 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -2761794973907590824, guid: b43020059a3f664448a3c600280b1a12, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7658212612483056702, guid: b43020059a3f664448a3c600280b1a12, type: 3}
   m_PrefabInstance: {fileID: 4908172508314766507}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1657305397}
@@ -6713,6 +6714,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d33331170ec89114e8127353529ed9c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!212 &1657305401 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4908172507749086611, guid: b43020059a3f664448a3c600280b1a12, type: 3}
+  m_PrefabInstance: {fileID: 4908172508314766507}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1669121495
 GameObject:
   m_ObjectHideFlags: 0
