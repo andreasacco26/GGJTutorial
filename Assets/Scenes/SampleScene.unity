@@ -319,6 +319,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6293344381962249023, guid: 1b1d8987b20fca44aaf1a58bdb07c91b, type: 3}
   m_PrefabInstance: {fileID: 66587586}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &72425357 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1950293821003713727, guid: 2d678624dfb2e264584e7a2a83c93b52, type: 3}
+  m_PrefabInstance: {fileID: 1950293820715312144}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c4801046cfdc5449103000462a97c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &77896176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -770,7 +781,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 1657305397}
-  speed: 200
+  speed: 400
   allBricks: []
 --- !u!4 &195684954
 Transform:
@@ -2571,7 +2582,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.125
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4794,7 +4805,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1302771371}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 195684953}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ToggleBrickParticles
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1302771371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7462,7 +7485,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1900723255}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 72425357}
+        m_TargetAssemblyTypeName: PaddleMovement, Assembly-CSharp
+        m_MethodName: TogglePaddleTweening
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1900723255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8079,7 +8114,7 @@ MonoBehaviour:
   - name: pling12
     clip: {fileID: 8300000, guid: 079f70cef88ead54bbdeba0395106e7f, type: 3}
   - name: paddle
-    clip: {fileID: 8300000, guid: add88212b56f19b418a590dda06b59ff, type: 3}
+    clip: {fileID: 8300000, guid: 661643984dda6744080dfefbf28cb879, type: 3}
   musicSound:
     name: Theme
     clip: {fileID: 8300000, guid: 1a586b2d8dda4534085cd1d55486fda4, type: 3}
@@ -8390,6 +8425,10 @@ PrefabInstance:
     - target: {fileID: 1950293821003713724, guid: 2d678624dfb2e264584e7a2a83c93b52, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950293821003713727, guid: 2d678624dfb2e264584e7a2a83c93b52, type: 3}
+      propertyPath: scaleCoefficient
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d678624dfb2e264584e7a2a83c93b52, type: 3}

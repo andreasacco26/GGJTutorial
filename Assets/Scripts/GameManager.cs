@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEditor.PackageManager.Requests;
 
 public class GameManager : MonoBehaviour
 {
@@ -45,7 +44,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // TODO: destory current ball and instantiate another at (0,0,0).
     private void ResetBall()
     {
         Transform ballTransform = ball.GetComponent<Transform>();
@@ -61,10 +59,9 @@ public class GameManager : MonoBehaviour
         {
             if (!brick.activeSelf)
             {
-                BrickDestroyer bd = brick.GetComponent<BrickDestroyer>();
+                Brick bd = brick.GetComponent<Brick>();
                 if (bd != null)
                 {
-                    Debug.Log("Activating brick!");
                     bd.Activate();
                 }
             }
@@ -80,4 +77,16 @@ public class GameManager : MonoBehaviour
 
     public void AddBrick(GameObject obj) => allBricks.Add(obj);
     public List<GameObject> GetAllBricks() { return allBricks; }
+
+    public void ToggleBrickParticles()
+    {
+        foreach (GameObject brick in allBricks)
+        {
+            Brick bd = brick.GetComponent<Brick>();
+            if (bd != null)
+            {
+                bd.ToggleParticles();
+            }
+        }
+    }
 }
