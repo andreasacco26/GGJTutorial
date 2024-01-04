@@ -10,12 +10,12 @@ public class Sound
 
 public class AudioManager : MonoBehaviour
 {
-    [Header("====Audio Sources====")]
+    [Header("Audio Sources")]
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource sfxSource;
-    [Header("====Audio Clips====")]
-    [SerializeField] List<Sound> sfxSounds;
-    [SerializeField] Sound musicSound;
+    [Header("Audio Clips")]
+    [Tooltip("Sound effects!"), SerializeField] List<Sound> sfxSounds;
+    [Tooltip("Background music for the game"), SerializeField] Sound musicSound;
 
     public static AudioManager Instance { get; private set; }
 

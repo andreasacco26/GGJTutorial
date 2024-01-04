@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] GameObject ball;
-    [SerializeField] float speed;
-    [SerializeField] List<GameObject> allBricks;
+    [Tooltip("Reference to the ball object."), SerializeField] GameObject ball;
+    [Tooltip("Maximum allowed speed from which force applied to the ball is calculated."), SerializeField] float speed;
+    private readonly List<GameObject> allBricks;
     private Rigidbody2D ballRb;
 
     public static GameManager Instance { get; private set; }
@@ -49,8 +49,7 @@ public class GameManager : MonoBehaviour
         Transform ballTransform = ball.GetComponent<Transform>();
         ballRb.velocity = Vector3.zero;
         ballRb.angularVelocity = 0f;
-        ballTransform.rotation = Quaternion.Euler(Vector3.zero);
-        ballTransform.position = Vector3.zero;
+        ballTransform.SetPositionAndRotation(Vector3.zero, Quaternion.Euler(Vector3.zero));
     }
 
     private void ResetBricks()

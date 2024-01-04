@@ -2,18 +2,15 @@ using UnityEngine;
 
 public class Brick : MonoBehaviour
 {
-    [SerializeField] GameObject particlesPrefab;
+    [Header("Particle Effects")]
+    [Tooltip("Particle effect prefab for impacts on the paddle."), SerializeField] GameObject particlesPrefab;
     private bool particlesActive = false;
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Ball"))
         {
-            if (particlesActive)
-            {
-                GameObject particleObj = Instantiate(particlesPrefab, other.transform);
-                Destroy(particleObj, 1f);
-            }
+            if (particlesActive) Utilities.InstantiateAndDestroy(particlesPrefab, other.transform, 1f);
             Dectivate();
         }
     }

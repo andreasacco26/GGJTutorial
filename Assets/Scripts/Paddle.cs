@@ -46,12 +46,7 @@ public class Paddle : MonoBehaviour
         // TODO: add force and a direction to the ball when it hits the paddle in a certain area.
 
 
-        if (confettiActive)
-        {
-            // TODO: Put this into a utility class.
-            GameObject particleObj = Instantiate(confettiPrefab, other.transform);
-            Destroy(particleObj, 1f);
-        }
+        if (confettiActive) Utilities.InstantiateAndDestroy(confettiPrefab, other.transform, 1f);
     }
 
     public void TogglePaddleTweening() => tweeningActive = !tweeningActive;
