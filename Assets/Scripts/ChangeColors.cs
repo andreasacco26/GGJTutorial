@@ -15,7 +15,9 @@ public class ChangeColors : MonoBehaviour
 {
     [Tooltip("List of available palettes to switch."), SerializeField] List<ColorPalette> colorPalettes;
     [Tooltip("The paddle renderer."), SerializeField] SpriteRenderer paddleRenderer;
-    private string currentPaletteName;
+    private static readonly string originalPaletteName = "original";
+    private static readonly string alternativePaletteName = "alternative";
+    private string currentPaletteName = originalPaletteName;
     private Camera mainCamera;
 
     void Start() => mainCamera = Camera.main;
@@ -42,7 +44,7 @@ public class ChangeColors : MonoBehaviour
 
     public void ToggleColors()
     {
-        if (currentPaletteName == "original") SelectPalette("alternative");
-        else SelectPalette("original");
+        if (currentPaletteName == originalPaletteName) SelectPalette(alternativePaletteName);
+        else SelectPalette(originalPaletteName);
     }
 }
