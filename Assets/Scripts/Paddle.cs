@@ -17,10 +17,17 @@ public class Paddle : MonoBehaviour
     private bool tweeningActive;
     private bool confettiActive;
     private float initialScaleY;
+    private float screenBoundsX;
+    private float paddleLength;
 
     void Awake() => mainCamera = Camera.main;
 
-    void Start() => initialScaleY = gameObject.transform.localScale.y;
+    void Start()
+    {
+        initialScaleY = gameObject.transform.localScale.y;
+        screenBoundsX = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, mainCamera.transform.position.z)).x;
+        paddleLength = gameObject.GetComponent<BoxCollider2D>().size.x;
+    }
 
     void Update()
     {
@@ -29,6 +36,7 @@ public class Paddle : MonoBehaviour
         Vector2 newPosition = Vector2.SmoothDamp(transform.position, mousePosition, ref currentVelocity, smoothTime, mouseOffsetX * maxMoveSpeed);
         // The new position should never update the Y value.
         newPosition.y = transform.position.y;
+        newPosition.x = Mathf.Clamp(newPosition.x, paddleLength - screenBoundsX, screenBoundsX - paddleLength);
         transform.position = newPosition;
 
         if (tweeningActive) TweenScaleY(mouseOffsetX);
@@ -43,9 +51,6 @@ public class Paddle : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (!other.gameObject.CompareTag("Ball")) return;
-        // TODO: add force and a direction to the ball when it hits the paddle in a certain area.
-
-
         if (confettiActive) Utilities.InstantiateAndDestroy(confettiPrefab, other.transform, 1f);
     }
 

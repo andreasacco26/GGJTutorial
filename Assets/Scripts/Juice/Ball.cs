@@ -2,12 +2,8 @@ using DG.Tweening;
 using UnityEngine;
 
 // TODO list:
-// Ball: particles
-// Paddle: confetti
-// Bricks: crumble
+// Fix: Ball reset
 // Score: put a small text in the canvas, update it +10pts from the ball whenever it hits a brick. Counter multiplies results
-// Toon shader?
-// Bloom?
 public class Ball : MonoBehaviour
 {
     [Tooltip("Short interval during which player can do brick combos. Used for SFX and VFX"), SerializeField] float brickMaxTimer = 1f;
