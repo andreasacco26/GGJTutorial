@@ -1203,8 +1203,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Ball, Assembly-CSharp
+      - m_Target: {fileID: 195684953}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: ToggleCameraShake
         m_Mode: 1
         m_Arguments:
@@ -1521,8 +1521,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Ball, Assembly-CSharp
+      - m_Target: {fileID: 195684953}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: ToggleBallTween
         m_Mode: 1
         m_Arguments:
@@ -2009,8 +2009,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Ball, Assembly-CSharp
+      - m_Target: {fileID: 195684953}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: TogglePaddleSound
         m_Mode: 1
         m_Arguments:
@@ -3560,7 +3560,6 @@ MonoBehaviour:
     bricksColor: {r: 1, g: 0.3254902, b: 0.3254902, a: 1}
     paddleColor: {r: 1, g: 0.50980395, b: 0.023529412, a: 1}
     ballColor: {r: 1, g: 0.73333335, b: 0.30588236, a: 1}
-  ballRenderer: {fileID: 0}
   paddleRenderer: {fileID: 729662729}
 --- !u!4 &1202353384 stripped
 Transform:
@@ -4470,8 +4469,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Ball, Assembly-CSharp
+      - m_Target: {fileID: 195684953}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: ToggleBrickSound
         m_Mode: 1
         m_Arguments:
@@ -5381,9 +5380,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Trail, Assembly-CSharp
-        m_MethodName: ToggleTrailRenderer
+      - m_Target: {fileID: 195684953}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ToggleBallTrail
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5638,8 +5637,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Ball, Assembly-CSharp
+      - m_Target: {fileID: 195684953}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: ToggleWallSound
         m_Mode: 1
         m_Arguments:
@@ -6844,7 +6843,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 72425357}
-        m_TargetAssemblyTypeName: PaddleMovement, Assembly-CSharp
+        m_TargetAssemblyTypeName: Paddle, Assembly-CSharp
         m_MethodName: TogglePaddleTweening
         m_Mode: 1
         m_Arguments:

@@ -14,7 +14,6 @@ public struct ColorPalette
 public class ChangeColors : MonoBehaviour
 {
     [Tooltip("List of available palettes to switch."), SerializeField] List<ColorPalette> colorPalettes;
-    [Tooltip("The ball renderer."), SerializeField] SpriteRenderer ballRenderer;
     [Tooltip("The paddle renderer."), SerializeField] SpriteRenderer paddleRenderer;
     private string currentPaletteName;
     private Camera mainCamera;
@@ -31,7 +30,7 @@ public class ChangeColors : MonoBehaviour
         }
 
         mainCamera.backgroundColor = palette.backgroundColor;
-        ballRenderer.color = palette.ballColor;
+        GameManager.Instance.Ball().GetComponent<SpriteRenderer>().color = palette.ballColor;
         paddleRenderer.color = palette.paddleColor;
         foreach (GameObject brick in GameManager.Instance.GetAllBricks())
         {

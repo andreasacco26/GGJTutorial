@@ -14,8 +14,8 @@ public class Paddle : MonoBehaviour
 
     private Vector2 currentVelocity;
     private Camera mainCamera;
-    private bool tweeningActive;
-    private bool confettiActive;
+    private bool tweeningActive = false;
+    private bool confettiActive = false;
     private float initialScaleY;
     private float screenBoundsX;
     private float paddleLength;

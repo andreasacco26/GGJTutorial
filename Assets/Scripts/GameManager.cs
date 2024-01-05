@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
 
     public void AddBrick(GameObject obj) => allBricks.Add(obj);
     public List<GameObject> GetAllBricks() { return allBricks; }
+    public GameObject Ball() { return currentBall; }
 
     public void ToggleBrickParticles()
     {
@@ -82,4 +83,16 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    public void ToggleBallTrail()
+    {
+        TrailRenderer tr = currentBall.GetComponent<TrailRenderer>();
+        tr.enabled = !tr.enabled;
+    }
+
+    public void ToggleBrickSound() { currentBall.GetComponent<Ball>().ToggleBrickSound(); }
+    public void TogglePaddleSound() { currentBall.GetComponent<Ball>().TogglePaddleSound(); }
+    public void ToggleWallSound() { currentBall.GetComponent<Ball>().ToggleWallSound(); }
+    public void ToggleCameraShake() { currentBall.GetComponent<Ball>().ToggleCameraShake(); }
+    public void ToggleBallTween() { currentBall.GetComponent<Ball>().ToggleBallTween(); }
 }
