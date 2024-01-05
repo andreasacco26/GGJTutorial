@@ -2,7 +2,6 @@ using DG.Tweening;
 using UnityEngine;
 
 // TODO list:
-// Fix: Ball reset
 // Score: put a small text in the canvas, update it +10pts from the ball whenever it hits a brick. Counter multiplies results
 public class Ball : MonoBehaviour
 {
